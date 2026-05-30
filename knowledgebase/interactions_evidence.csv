@@ -1,0 +1,6 @@
+rule_id,interaction_type,entity_a,entity_b,evidence_level,confidence,pmid,doi,status,notes
+SYN0001,synergy,trehalose,dextran,mechanistic,medium,TBD,TBD,placeholder,Needs dedicated lyophilization and formulation literature curation
+SYN0003,synergy,trehalose,pvp,mechanistic,medium,TBD,TBD,placeholder,Sugar-polymer amorphous matrix stabilization literature required
+CON0001,conflict,edta,catalase,biochemical,medium,TBD,TBD,placeholder,Validate dependence on enzyme preparation and metal requirements
+CON0003,workflow_conflict,silicic_acid,lcms_workflow,workflow,low,TBD,TBD,placeholder,Particularly relevant to mineralized sample cleanup prior to MS
+PCR001,assay_risk,high_polymer_load,pcr_workflow,workflow,medium,TBD,TBD,placeholder,Collect polymer-associated PCR inhibition literature
