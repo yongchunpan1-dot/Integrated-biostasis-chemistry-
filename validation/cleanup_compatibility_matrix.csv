@@ -1,0 +1,9 @@
+material_class,flow_cytometry,qPCR,enzyme_activity,LCMS,cleanup_difficulty
+osmoprotectant,excellent,excellent,excellent,excellent,easy
+protein_stabilizer,excellent,excellent,excellent,excellent,easy
+antioxidant,good,good,good,good,easy
+chelator,good,excellent,variable,good,easy
+polymer,variable,variable,good,variable,medium
+hydrogel,variable,variable,variable,variable,hard
+mineralization_agent,variable,variable,variable,variable,hard
+metal_organic_framework,variable,variable,variable,variable,hard
