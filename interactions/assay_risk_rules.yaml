@@ -1,0 +1,26 @@
+assay_risks:
+  LCMS:
+    high_risk:
+      - peg
+      - high_polymer_load
+    medium_risk:
+      - silicic_acid
+      - calcium_phosphate
+
+  PCR:
+    medium_risk:
+      - high_polymer_load
+      - residual_mineral_matrix
+
+  FLOW_CYTOMETRY:
+    medium_risk:
+      - particle_aggregates
+
+  IMAGING:
+    medium_risk:
+      - opaque_mineral_matrix
+
+  EV_ANALYSIS:
+    medium_risk:
+      - vesicle_aggregation
+      - excessive_polymer_crowding
