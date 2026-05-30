@@ -1,0 +1,53 @@
+{
+  "membrane_protection": {
+    "description": "Ability to preserve membrane structure, lipid organization, vesicle integrity, and resistance to aggregation or rupture.",
+    "scale": "0-10",
+    "0": "strongly damaging",
+    "5": "neutral or unknown",
+    "10": "strongly protective"
+  },
+  "protein_protection": {
+    "description": "Ability to preserve protein folding, solubility, and functionality.",
+    "scale": "0-10"
+  },
+  "nucleic_acid_protection": {
+    "description": "Ability to preserve DNA/RNA integrity and downstream amplifiability.",
+    "scale": "0-10"
+  },
+  "oxidative_protection": {
+    "description": "Ability to reduce oxidative damage to biomolecules.",
+    "scale": "0-10"
+  },
+  "vitrification": {
+    "description": "Potential to form glass-like protective states or reduce molecular mobility.",
+    "scale": "0-10"
+  },
+  "molecular_crowding": {
+    "description": "Contribution to crowding, viscosity, and restricted diffusion.",
+    "scale": "0-10"
+  },
+  "mineralization_support": {
+    "description": "Potential to support biomineralization, encapsulation, or inorganic protective matrices.",
+    "scale": "0-10"
+  },
+  "pcr_compatibility": {
+    "description": "Expected compatibility with PCR and qPCR workflows.",
+    "scale": "0-10"
+  },
+  "lcms_compatibility": {
+    "description": "Expected compatibility with LC-MS proteomics and metabolomics workflows.",
+    "scale": "0-10"
+  },
+  "cost_score": {
+    "description": "Relative economic accessibility.",
+    "scale": "0-10"
+  },
+  "availability_score": {
+    "description": "Ease of sourcing from commercial suppliers.",
+    "scale": "0-10"
+  },
+  "evidence_count": {
+    "description": "Number of curated evidence records supporting the material.",
+    "scale": "integer"
+  }
+}
