@@ -19,3 +19,6 @@ MAT0017,Silicic acid,mineralization_agent,no,no,8,8,8,1,0,0,10,6,4,8,8,0,seed
 MAT0018,Calcium phosphate,mineralization_agent,yes,no,7,7,7,1,0,0,10,7,5,9,9,0,seed
 MAT0019,Alginate,hydrogel,yes,no,6,6,4,1,2,7,0,8,7,8,9,0,seed
 MAT0020,Agarose,hydrogel,yes,no,5,5,3,1,2,8,0,9,8,8,10,0,seed
+MAT0021,ZIF-8,metal_organic_framework,no,no,7,9,8,1,0,0,10,5,3,5,6,0,seed
+MAT0022,Zinc acetate,MOF_precursor,no,no,1,1,1,1,0,0,8,3,3,8,9,0,precursor
+MAT0023,2-methylimidazole,MOF_precursor,no,no,1,1,1,1,0,0,8,3,3,8,9,0,precursor
