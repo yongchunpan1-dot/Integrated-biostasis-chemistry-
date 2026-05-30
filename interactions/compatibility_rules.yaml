@@ -1,0 +1,71 @@
+# Integrated Biostasis Chemistry
+# Component-component compatibility and synergy rules.
+# Scores are intentionally conservative seed priors and should be updated by literature curation and experimental feedback.
+
+synergy_rules:
+  - rule_id: SYN0001
+    components: [trehalose, dextran]
+    score_delta: 2.0
+    confidence: medium
+    mechanism: sugar_glass_plus_polymeric_crowding
+    rationale: Trehalose provides vitrification and preferential hydration, while dextran can increase matrix viscosity and reduce molecular mobility.
+    affected_state_layers: [membrane_integrity, protein_functionality, vesicle_colloidal_stability]
+
+  - rule_id: SYN0002
+    components: [trehalose, sucrose]
+    score_delta: 1.0
+    confidence: medium
+    mechanism: complementary_disaccharide_glass_formation
+    rationale: Mixed disaccharide systems may broaden glass-forming behavior and reduce crystallization risk.
+    affected_state_layers: [protein_functionality, membrane_integrity]
+
+  - rule_id: SYN0003
+    components: [trehalose, pvp]
+    score_delta: 1.5
+    confidence: medium
+    mechanism: sugar_polymer_glass_stabilization
+    rationale: PVP may support amorphous matrix formation and reduce crystallization of sugars during drying or storage.
+    affected_state_layers: [protein_functionality, vesicle_colloidal_stability]
+
+  - rule_id: SYN0004
+    components: [sucrose, dextran]
+    score_delta: 1.5
+    confidence: medium
+    mechanism: disaccharide_plus_polymer_matrix
+    rationale: Sucrose contributes preferential hydration and dextran contributes molecular crowding and matrix viscosity.
+    affected_state_layers: [protein_functionality, membrane_integrity]
+
+  - rule_id: SYN0005
+    components: [glutathione, trehalose]
+    score_delta: 1.0
+    confidence: low
+    mechanism: redox_protection_plus_glass_stabilization
+    rationale: Combines oxidative damage reduction with glass/membrane stabilization.
+    affected_state_layers: [protein_functionality, enzyme_activity, membrane_integrity]
+
+  - rule_id: SYN0006
+    components: [calcium_phosphate, nucleic_acid_targets]
+    score_delta: 1.0
+    confidence: low
+    mechanism: mineral_assisted_nucleic_acid_stabilization
+    rationale: Calcium phosphate-like mineral phases may support nucleic-acid adsorption or encapsulation, but reversibility and assay compatibility must be verified.
+    affected_state_layers: [nucleic_acid_amplifiability]
+
+compatibility_rules:
+  - rule_id: COM0001
+    components: [trehalose, catalase]
+    score_delta: 0.5
+    confidence: low
+    rationale: Trehalose may help stabilize protein enzymes; catalase may reduce peroxide-associated oxidative stress.
+
+  - rule_id: COM0002
+    components: [arginine, trehalose]
+    score_delta: 0.5
+    confidence: low
+    rationale: Arginine can reduce protein aggregation while trehalose contributes glass/membrane stabilization.
+
+  - rule_id: COM0003
+    components: [proline, trehalose]
+    score_delta: 0.5
+    confidence: low
+    rationale: Compatible osmolyte-like pairing for protein and stress stabilization.
