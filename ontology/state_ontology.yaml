@@ -1,0 +1,99 @@
+# Biological state ontology for Integrated Biostasis Chemistry
+# This file defines what the platform is ultimately trying to preserve.
+# Entropy pathways describe mechanisms of deterioration; state layers describe measurable biological information.
+
+state_layers:
+  extracellular_vesicle_integrity:
+    definition: Preservation of EV particle number, size distribution, membrane integrity, and surface-marker accessibility.
+    primary_readouts:
+      - NTA_particle_recovery
+      - NTA_size_distribution
+      - EV_marker_ELISA
+      - TEM_or_cryoEM_morphology
+    linked_entropy_pathways:
+      - structural_entropy
+      - diffusional_entropy
+      - confinement_entropy
+
+  membrane_structure:
+    definition: Preservation of lipid bilayer organization and prevention of rupture, fusion, leakage, or aggregation.
+    primary_readouts:
+      - dye_leakage_assay
+      - membrane_marker_retention
+      - particle_colloidal_stability
+    linked_entropy_pathways:
+      - structural_entropy
+      - chemical_entropy
+      - phase_entropy
+
+  protein_functionality:
+    definition: Preservation of protein folding, solubility, accessibility, and functional activity.
+    primary_readouts:
+      - HRP_activity
+      - BCA_or_total_protein_recovery
+      - SDS_PAGE_or_WB_signal
+      - LCMS_protein_identification
+    linked_entropy_pathways:
+      - structural_entropy
+      - chemical_entropy
+      - enzymatic_entropy
+      - phase_entropy
+
+  enzyme_activity:
+    definition: Preservation of catalytic activity and cofactor-dependent enzyme function.
+    primary_readouts:
+      - HRP_activity
+      - catalase_activity
+      - enzyme_specific_activity_assay
+    linked_entropy_pathways:
+      - structural_entropy
+      - chemical_entropy
+      - enzymatic_entropy
+
+  nucleic_acid_amplifiability:
+    definition: Preservation of DNA/RNA integrity sufficient for PCR or qPCR amplification.
+    primary_readouts:
+      - qPCR_Ct_shift
+      - endpoint_PCR_band_intensity
+      - RNA_integrity_or_fragmentation
+      - DNA_recovery
+    linked_entropy_pathways:
+      - enzymatic_entropy
+      - chemical_entropy
+      - confinement_entropy
+
+  molecular_diagnostic_information:
+    definition: Preservation of integrated diagnostic signal fidelity across EV, protein, and nucleic-acid layers.
+    primary_readouts:
+      - composite_temporal_fidelity_score
+      - biomarker_signal_retention
+      - classification_accuracy_after_storage
+    linked_entropy_pathways:
+      - structural_entropy
+      - chemical_entropy
+      - enzymatic_entropy
+      - diffusional_entropy
+      - phase_entropy
+      - confinement_entropy
+
+  cellular_phenotype:
+    definition: Preservation of cell identity, viability, surface phenotype, transcriptional state, and secretion profile.
+    primary_readouts:
+      - viability
+      - flow_cytometry_markers
+      - transcriptomic_similarity
+      - secretome_or_EV_release_profile
+    linked_entropy_pathways:
+      - biological_entropy
+      - chemical_entropy
+      - structural_entropy
+
+composite_scores:
+  temporal_fidelity_score:
+    abbreviation: TFS
+    definition: Weighted preservation score summarizing retention of biological-state information after storage stress.
+    default_components:
+      EV_integrity: 0.34
+      protein_functionality: 0.33
+      nucleic_acid_amplifiability: 0.33
+    note: Weights should be adapted to the target application, such as EV diagnostics, proteomics, nucleic-acid testing, or cellular phenotype preservation.
