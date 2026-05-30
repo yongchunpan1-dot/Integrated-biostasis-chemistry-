@@ -1,0 +1,28 @@
+conflict_rules:
+  - rule_id: CON0001
+    components: [edta, catalase]
+    score_delta: -3.0
+    confidence: medium
+    mechanism: metal_cofactor_chelation
+    rationale: Chelators may reduce activity or stability of metal-dependent enzymes.
+
+  - rule_id: CON0002
+    components: [edta, metalloprotease_targets]
+    score_delta: -2.0
+    confidence: high
+    mechanism: metal_dependent_enzyme_inhibition
+    rationale: Chelation can suppress metal-dependent protein activity.
+
+  - rule_id: CON0003
+    components: [silicic_acid, lcms_workflow]
+    score_delta: -1.5
+    confidence: low
+    mechanism: workflow_interference
+    rationale: Mineral-associated preservation may require additional cleanup before mass spectrometry.
+
+  - rule_id: CON0004
+    components: [high_polymer_load, pcr_workflow]
+    score_delta: -1.0
+    confidence: low
+    mechanism: downstream_assay_interference
+    rationale: Excessive polymer content may inhibit extraction or amplification workflows.
