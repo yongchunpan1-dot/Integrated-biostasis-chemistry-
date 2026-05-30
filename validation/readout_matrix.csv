@@ -1,0 +1,7 @@
+readout,state_layer,measurement,score_name,score_range
+Flow_membrane_integrity,membrane_structure,flow_cytometry,Structural_Fidelity_Score,0-10
+NTA_particle_recovery,extracellular_vesicle_integrity,NTA,Structural_Fidelity_Score,0-10
+HRP_activity,protein_functionality,enzyme_activity,Protein_Fidelity_Score,0-10
+Catalase_activity,enzyme_activity,enzyme_activity,Protein_Fidelity_Score,0-10
+qPCR_Ct_shift,nucleic_acid_amplifiability,qPCR,Nucleic_Acid_Fidelity_Score,0-10
+PCR_success,nucleic_acid_amplifiability,PCR,Nucleic_Acid_Fidelity_Score,0-10
