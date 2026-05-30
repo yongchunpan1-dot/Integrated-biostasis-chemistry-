@@ -1,0 +1,30 @@
+material_classes:
+  osmoprotectants:
+    - trehalose
+    - sucrose
+    - glycerol
+    - ectoine
+  protein_stabilizers:
+    - arginine
+    - proline
+    - albumin
+  polymers:
+    - peg
+    - pvp
+    - dextran
+    - ficoll
+  antioxidants:
+    - catalase
+    - glutathione
+    - trolox
+  chelators:
+    - edta
+    - egta
+    - dtpa
+  mineralization_agents:
+    - silicic_acid
+    - calcium_phosphate
+  buffers:
+    - hepes
+    - tris
+    - pbs
