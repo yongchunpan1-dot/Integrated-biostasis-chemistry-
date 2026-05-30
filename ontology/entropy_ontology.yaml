@@ -1,0 +1,99 @@
+# Entropy-centered ontology for Integrated Biostasis Chemistry
+# The formulation generator should assemble candidates by covering complementary entropy-increase pathways,
+# rather than by randomly mixing material classes.
+
+entropy_pathways:
+  structural_entropy:
+    definition: Loss of ordered biological structure, including membrane rupture, vesicle aggregation, protein unfolding, and lipid reorganization.
+    protected_state_layers:
+      - extracellular_vesicle_integrity
+      - membrane_structure
+      - protein_conformation
+    representative_materials:
+      - trehalose
+      - sucrose
+      - ectoine
+      - glycerol
+      - poloxamer_188
+      - cholesterol
+
+  chemical_entropy:
+    definition: Irreversible chemical modification such as oxidation, hydrolysis, deamidation, and radical-associated damage.
+    protected_state_layers:
+      - protein_functionality
+      - enzyme_activity
+      - nucleic_acid_integrity
+      - lipid_integrity
+    representative_materials:
+      - catalase
+      - glutathione
+      - trolox
+      - ascorbate
+      - superoxide_dismutase
+
+  enzymatic_entropy:
+    definition: Biological degradation driven by residual enzymes, including nucleases, proteases, phosphatases, lipases, and metal-dependent enzymes.
+    protected_state_layers:
+      - nucleic_acid_amplifiability
+      - protein_integrity
+      - vesicle_surface_markers
+    representative_materials:
+      - edta
+      - egta
+      - dtpa
+      - protease_inhibitors
+      - rnase_inhibitors
+
+  diffusional_entropy:
+    definition: Loss of spatial confinement caused by diffusion, leakage, dilution, cargo escape, or increased molecular mobility.
+    protected_state_layers:
+      - ev_cargo_retention
+      - protein_microenvironment
+      - nucleic_acid_microenvironment
+    representative_materials:
+      - dextran
+      - pvp
+      - peg
+      - ficoll
+      - alginate
+      - agarose
+
+  phase_entropy:
+    definition: Phase transition or instability, including crystallization, precipitation, phase separation, and glass-to-rubber transition.
+    protected_state_layers:
+      - dried_state_stability
+      - lyophilized_matrix_stability
+      - protein_solubility
+      - vesicle_colloidal_stability
+    representative_materials:
+      - trehalose
+      - sucrose
+      - raffinose
+      - pvp
+      - pullulan
+
+  confinement_entropy:
+    definition: Loss of biomolecular or supramolecular organization that can be reduced by protective shells, mineral matrices, or cage-like encapsulation.
+    protected_state_layers:
+      - extracellular_vesicle_integrity
+      - protein_functionality
+      - nucleic_acid_integrity
+      - whole_sample_architecture
+    representative_materials:
+      - silicic_acid
+      - calcium_phosphate
+      - zif_8
+      - zif_90
+      - uio_66
+
+  biological_entropy:
+    definition: Active biological drift such as metabolism, stress response, apoptosis, secretion, immune activation, or phenotype switching.
+    protected_state_layers:
+      - cellular_phenotype
+      - secretome_state
+      - extracellular_vesicle_release_profile
+    representative_materials:
+      - low_temperature
+      - metabolic_suppression
+      - reversible_encapsulation
+      - mineral_confinement
