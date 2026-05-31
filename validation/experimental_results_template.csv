@@ -1,0 +1,13 @@
+formulation_id,module,condition,replicate,membrane_score,hrp_score,qpcr_score,cleanup_score,tfs,ibs,notes
+AEF0001,cell_membrane,plasma_37C_3d,1,,,,,,,
+AEF0001,hrp_activity,plasma_37C_3d,1,,,,,,,
+AEF0001,nucleic_acid_qpcr,plasma_37C_3d,1,,,,,,,
+AEF0002,cell_membrane,plasma_37C_3d,1,,,,,,,
+AEF0002,hrp_activity,plasma_37C_3d,1,,,,,,,
+AEF0002,nucleic_acid_qpcr,plasma_37C_3d,1,,,,,,,
+AEF0003,cell_membrane,plasma_37C_3d,1,,,,,,,
+AEF0003,hrp_activity,plasma_37C_3d,1,,,,,,,
+AEF0003,nucleic_acid_qpcr,plasma_37C_3d,1,,,,,,,
+AEF0004,cell_membrane,plasma_37C_3d,1,,,,,,,
+AEF0004,hrp_activity,plasma_37C_3d,1,,,,,,,
+AEF0004,nucleic_acid_qpcr,plasma_37C_3d,1,,,,,,,
