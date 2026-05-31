@@ -1,0 +1,37 @@
+name: Generate Biostasis Formulations
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install pandas pyyaml numpy
+
+      - name: Create outputs directory
+        run: |
+          mkdir -p outputs
+
+      - name: Run formulation generator
+        run: |
+          python ranking/generate_formulations.py \
+            --top 48 \
+            --output outputs/top48_formulations.csv
+
+      - name: Upload formulations
+        uses: actions/upload-artifact@v4
+        with:
+          name: top48-formulations
+          path: outputs/top48_formulations.csv
