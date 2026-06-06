@@ -1,0 +1,20 @@
+material,mechanism_class,membrane_score,protein_score,nucleic_acid_score,confidence,notes
+Trehalose,Structural_Stabilization,9,5,2,low,membrane-biased stabilizer
+Dextran,Structural_Stabilization,8,4,1,low,crowding and structural stabilization
+PEG,Structural_Stabilization,7,5,2,low,structural stabilization but assay-cleanup concerns
+Glycerol,Structural_Stabilization,7,4,3,low,water-state and structural effects
+PVP,Structural_Stabilization,6,5,2,low,polymer stabilizer
+Cholesterol,Structural_Stabilization,9,4,1,low,strong membrane-focused stabilization
+Poloxamer,Structural_Stabilization,8,4,1,low,interface and membrane stabilization
+
+Trolox,Chemical_Stabilization,3,8,6,low,antioxidant protection
+Glutathione,Chemical_Stabilization,2,7,5,low,redox buffering
+Catalase,Chemical_Stabilization,2,8,4,low,ROS suppression
+EDTA,Chemical_Stabilization,1,3,9,low,nuclease inhibition and metal chelation
+EGTA,Chemical_Stabilization,1,3,8,low,calcium-selective chelation
+DTPA,Chemical_Stabilization,1,3,9,low,strong metal chelation
+
+Silica,Physical_Encapsulation,8,8,8,low,broad state protection hypothesis
+Calcium_Phosphate,Physical_Encapsulation,7,7,7,low,broad state protection hypothesis
+Hydrogel,Physical_Encapsulation,7,6,6,low,diffusion restriction and confinement
+
