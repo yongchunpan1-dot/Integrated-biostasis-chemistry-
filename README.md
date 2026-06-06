@@ -24,9 +24,23 @@ Integrated biostasis:
     Preserve biological-state information over time.
 ```
 
-## Three-layer state framework
+## Entropy-control perspective
 
-IBC currently defines biological-state preservation using three core layers:
+The theoretical foundation of IBC is that biological-state degradation is driven by progressive increases in disorder, molecular mobility, chemical damage, and information loss.
+
+Accordingly, IBC views preservation as an entropy-control problem.
+
+The objective is not to eliminate entropy, but to slow the processes that drive biological-state drift.
+
+```text
+Entropy Control
+        ↓
+State Preservation
+        ↓
+Temporal Fidelity
+```
+
+## Three-layer state framework
 
 ```text
 Membrane State
@@ -48,8 +62,6 @@ Information
 
 ### Membrane state
 
-Represents preservation of membrane-associated biological information:
-
 - membrane integrity
 - particle integrity
 - aggregation state
@@ -59,8 +71,6 @@ Represents preservation of membrane-associated biological information:
 
 ### Protein state
 
-Represents preservation of biological function:
-
 - protein recovery
 - protein conformation
 - enzymatic activity
@@ -69,13 +79,52 @@ Represents preservation of biological function:
 
 ### Nucleic-acid state
 
-Represents preservation of biological information:
-
 - DNA integrity
 - RNA integrity
 - qPCR amplifiability
 - sequencing compatibility
 - nucleic-acid recovery
+
+## Entropy-control mechanisms
+
+IBC currently groups preservation strategies into three primary mechanism classes.
+
+### 1. Structural Stabilization
+
+Reduces molecular mobility and structural reorganization.
+
+Examples:
+
+- trehalose
+- dextran
+- PEG
+- PVP
+- glycerol
+- cholesterol
+- poloxamers
+
+### 2. Chemical Stabilization
+
+Suppresses chemical reactions that cause information loss.
+
+Examples:
+
+- Trolox
+- glutathione
+- catalase
+- EDTA
+- EGTA
+- DTPA
+
+### 3. Physical Encapsulation
+
+Restricts accessibility and configurational freedom through physical confinement.
+
+Examples:
+
+- silica
+- calcium phosphate
+- hydrogels
 
 ## Biological State Vector
 
@@ -98,9 +147,9 @@ Temporal Fidelity = similarity(S0, St)
 ```text
 Literature and database mining
       ↓
-Preservation material knowledgebase
+Material knowledgebase
       ↓
-Descriptor ontology
+Entropy-control mechanism ontology
       ↓
 State ontology
       ↓
@@ -114,7 +163,19 @@ Formulation ranking
       ↓
 Experimental validation
       ↓
-Active learning and closed-loop refinement
+Active learning
+```
+
+## Core architecture
+
+```text
+Material
+      ↓
+Entropy-Control Mechanism
+      ↓
+Membrane / Protein / Nucleic-Acid State
+      ↓
+Temporal Fidelity Index (TFI)
 ```
 
 ## Repository structure
@@ -165,21 +226,7 @@ These measurements can be integrated into a composite **Temporal Fidelity Index 
 
 ## Current status
 
-This repository is an early-stage scaffold intended to develop a state-centric preservation framework.
-
-The long-term objective is to model:
-
-```text
-Material
-  ↓
-Mechanism
-  ↓
-State layer
-  ↓
-Temporal fidelity
-```
-
-rather than formulation optimization alone.
+This repository is an early-stage scaffold intended to develop a state-centric and entropy-informed preservation framework.
 
 ## Working definitions
 
