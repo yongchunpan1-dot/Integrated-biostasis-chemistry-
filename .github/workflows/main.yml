@@ -1,37 +1,258 @@
-name: Generate Biostasis Formulations
+#!/usr/bin/env python3
 
-on:
-  workflow_dispatch:
+import argparse
+import itertools
+import pandas as pd
+import numpy as np
 
-jobs:
-  generate:
-    runs-on: ubuntu-latest
+def normalize(series):
+if series.max() == series.min():
+return pd.Series([1.0] * len(series))
+return (series - series.min()) / (series.max() - series.min())
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+def balance_score(m, p, n):
+values = np.array([m, p, n], dtype=float)
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+```
+if values.mean() == 0:
+    return 0
 
-      - name: Install dependencies
-        run: |
-          pip install pandas pyyaml numpy
+cv = values.std() / values.mean()
 
-      - name: Create outputs directory
-        run: |
-          mkdir -p outputs
+return max(0.0, 1.0 - cv)
+```
 
-      - name: Run formulation generator
-        run: |
-          python ranking/generate_formulations.py \
-            --top 48 \
-            --output outputs/top48_formulations.csv
+def coverage_score(m, p, n):
+return (m + p + n) / 3.0
 
-      - name: Upload formulations
-        uses: actions/upload-artifact@v4
-        with:
-          name: top48-formulations
-          path: outputs/top48_formulations.csv
+def mechanism_diversity(n_mechanisms):
+return n_mechanisms / 3.0
+
+def assay_penalty(materials):
+penalty = 0.0
+
+```
+names = [x.lower() for x in materials]
+
+if "peg" in names:
+    penalty += 0.10
+
+if "silica" in names:
+    penalty += 0.10
+
+if "edta" in names:
+    penalty += 0.05
+
+return penalty
+```
+
+def load_materials(path):
+df = pd.read_csv(path)
+
+```
+required = [
+    "material",
+    "mechanism_class",
+    "membrane_score",
+    "protein_score",
+    "nucleic_acid_score",
+]
+
+missing = [c for c in required if c not in df.columns]
+
+if missing:
+    raise ValueError(
+        f"Missing columns in state_coverage_matrix.csv: {missing}"
+    )
+
+return df
+```
+
+def generate_candidates(df):
+
+```
+structural = df[
+    df["mechanism_class"] == "Structural_Stabilization"
+]
+
+chemical = df[
+    df["mechanism_class"] == "Chemical_Stabilization"
+]
+
+encapsulation = df[
+    df["mechanism_class"] == "Physical_Encapsulation"
+]
+
+candidates = []
+
+#
+# Structural + Chemical
+#
+for _, s in structural.iterrows():
+    for _, c in chemical.iterrows():
+
+        materials = [
+            s["material"],
+            c["material"],
+        ]
+
+        m = (
+            s["membrane_score"]
+            + c["membrane_score"]
+        )
+
+        p = (
+            s["protein_score"]
+            + c["protein_score"]
+        )
+
+        n = (
+            s["nucleic_acid_score"]
+            + c["nucleic_acid_score"]
+        )
+
+        candidates.append(
+            {
+                "materials": "; ".join(materials),
+                "mechanisms": 2,
+                "membrane": m,
+                "protein": p,
+                "na": n,
+            }
+        )
+
+#
+# Structural + Chemical + Encapsulation
+#
+for _, s in structural.iterrows():
+    for _, c in chemical.iterrows():
+        for _, e in encapsulation.iterrows():
+
+            materials = [
+                s["material"],
+                c["material"],
+                e["material"],
+            ]
+
+            m = (
+                s["membrane_score"]
+                + c["membrane_score"]
+                + e["membrane_score"]
+            )
+
+            p = (
+                s["protein_score"]
+                + c["protein_score"]
+                + e["protein_score"]
+            )
+
+            n = (
+                s["nucleic_acid_score"]
+                + c["nucleic_acid_score"]
+                + e["nucleic_acid_score"]
+            )
+
+            candidates.append(
+                {
+                    "materials": "; ".join(materials),
+                    "mechanisms": 3,
+                    "membrane": m,
+                    "protein": p,
+                    "na": n,
+                }
+            )
+
+return pd.DataFrame(candidates)
+```
+
+def rank_candidates(df):
+
+```
+df["coverage"] = df.apply(
+    lambda x: coverage_score(
+        x["membrane"],
+        x["protein"],
+        x["na"],
+    ),
+    axis=1,
+)
+
+df["balance"] = df.apply(
+    lambda x: balance_score(
+        x["membrane"],
+        x["protein"],
+        x["na"],
+    ),
+    axis=1,
+)
+
+df["mechanism_diversity"] = (
+    df["mechanisms"] / 3.0
+)
+
+df["assay_penalty"] = df["materials"].apply(
+    lambda x: assay_penalty(
+        [y.strip() for y in x.split(";")]
+    )
+)
+
+df["coverage_norm"] = normalize(
+    df["coverage"]
+)
+
+df["predicted_tfi"] = (
+    0.45 * df["coverage_norm"]
+    \+ 0.30 * df["balance"]
+    \+ 0.15 * df["mechanism_diversity"]
+    - 0.10 * df["assay_penalty"]
+)
+
+return df.sort_values(
+    "predicted_tfi",
+    ascending=False,
+)
+```
+
+def main():
+
+```
+parser = argparse.ArgumentParser()
+
+parser.add_argument(
+    "--matrix",
+    default="knowledgebase/state_coverage_matrix.csv",
+)
+
+parser.add_argument(
+    "--top",
+    type=int,
+    default=48,
+)
+
+parser.add_argument(
+    "--output",
+    required=True,
+)
+
+args = parser.parse_args()
+
+materials = load_materials(args.matrix)
+
+candidates = generate_candidates(materials)
+
+ranked = rank_candidates(candidates)
+
+top = ranked.head(args.top)
+
+top.to_csv(
+    args.output,
+    index=False,
+)
+
+print(
+    f"Generated {len(top)} formulations"
+)
+```
+
+if **name** == "**main**":
+main()
